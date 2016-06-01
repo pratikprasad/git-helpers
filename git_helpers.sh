@@ -136,3 +136,8 @@ function acm {
   ad $@
   git commit --amend
 }
+
+function space_join { local IFS="-"; echo "$*"; }
+function ca {
+  git commit -am `space_join $@`
+}
