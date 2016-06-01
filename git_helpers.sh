@@ -137,6 +137,15 @@ function acm {
   git commit --amend
 }
 
+# Add a new workflow for partial commits and squashing
 function ca {
   git commit -am "$*"
+}
+
+function num_commits {
+  git rev-list --count HEAD ^master
+}
+
+function sq {
+  git rebase -i HEAD~`num_commits`
 }
