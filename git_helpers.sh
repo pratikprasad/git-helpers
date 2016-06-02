@@ -129,17 +129,17 @@ function ad {
 
 function ac {
   ad $@
-  git commit
+  git commit -v
 }
 
 function acm {
   ad $@
-  git commit --amend
+  git commit --amend -v
 }
 
 # Add a new workflow for partial commits and squashing
 function ca {
-  git commit -am "$*"
+  git commit -amv "$*"
 }
 
 function num_commits {
