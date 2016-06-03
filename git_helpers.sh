@@ -81,7 +81,7 @@ function gp {
 }
 
 function dt {
-  git difftool
+  git difftool $@
 }
 
 # Git rebasing branch to master
