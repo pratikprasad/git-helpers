@@ -97,7 +97,6 @@ function rbm {
 function dbb {
   gp
   ch -
-  echo 'Deleting' $CUR_BRANCH "after a soft rebase"
   db
 }
 
@@ -137,9 +136,13 @@ function acm {
   git commit --amend -v
 }
 
+function aca {
+  git commit --amend -av
+}
+
 # Add a new workflow for partial commits and squashing
 function ca {
-  git commit -amv "$*"
+  git commit -am "$*"
 }
 
 function num_commits {
