@@ -158,3 +158,7 @@ function num_commits {
 function sq {
   git rebase -i HEAD~`num_commits`
 }
+
+function remove_orig {
+  rm `find -f  ./* | grep .*.orig`
+}
