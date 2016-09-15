@@ -13,7 +13,7 @@ function lg {
 red=`tput setaf 1`
 green=`tput setaf 2`
 yellow=`tput setaf 3`
-blue=`tput setaf 4`
+purple=`tput setaf 5`
 reset=`tput sgr0`
 # Pretty print git branches.
 function br {
@@ -25,9 +25,9 @@ function br {
     # replace file separator '/' with new lines and pick the last token
     branchName=$(echo $branch | tr "/" "\n" | tail -n 1)
     if [[ $branchName =~ $currentBranch ]]; then
-      echo "${blue}(${branchName: -3}) ${green}$branchName ${reset}" | tr "-" " "
+      echo "${purple}(${branchName: -3}) ${green}$branchName ${reset}" | tr "-" " "
     else
-      echo "${blue}(${branchName: -3}) ${reset}$branchName" | tr "-" " "
+      echo "${purple}(${branchName: -3}) ${reset}$branchName" | tr "-" " "
     fi
   done
 }
