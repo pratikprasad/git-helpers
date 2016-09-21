@@ -100,21 +100,18 @@ function rbm {
   br
 }
 
-function dbb {
-  gp
-  ch -
-  db
-}
-
 function db {
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
-  git rebase master
-  ch master
-  echo 'Deleting' $CUR_BRANCH "after a soft rebase"
-  brd $CUR_BRANCH
+  MERGED_BRANCHES=`git branch --merged master`
+  if [[ $MERGED_BRANCHES =~ $CUR_BRANCH ]]; then
+    ch master
+    echo 'Deleting' $CUR_BRANCH "after a soft rebase"
+    brdd $CUR_BRANCH
+  else 
+    echo "The branch $CUR_BRANCH is not yet merged"
+  fi
   br
 }
-
 
 function join { local IFS="-"; echo "$*"; }
 
