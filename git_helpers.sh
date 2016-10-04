@@ -101,9 +101,11 @@ function rbm {
 }
 
 function db {
+  git pull --prune
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
-  MERGED_BRANCHES=`git branch --merged master`
-  if [[ $MERGED_BRANCHES =~ $CUR_BRANCH ]]; then
+  STATUS=`git status`
+  EXPECTED="the upstream is gone" 
+  if [[ $STATUS == *"$EXPECTED"* ]]; then
     ch master
     echo 'Deleting' $CUR_BRANCH "after a soft rebase"
     brdd $CUR_BRANCH
