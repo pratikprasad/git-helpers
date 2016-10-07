@@ -104,7 +104,7 @@ function db {
   git pull --prune
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
   STATUS=`git status`
-  EXPECTED="the upstream is gone" 
+  EXPECTED="the upstream is gone" # HACK 
   if [[ $STATUS == *"$EXPECTED"* ]]; then
     ch master
     echo 'Deleting' $CUR_BRANCH "after a soft rebase"
@@ -112,7 +112,6 @@ function db {
   else 
     echo "The branch $CUR_BRANCH is not yet merged"
   fi
-  br
 }
 
 function join { local IFS="-"; echo "$*"; }
