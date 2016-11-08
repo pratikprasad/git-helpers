@@ -33,10 +33,12 @@ function br {
 }
 
 function brd {
+  ch master
   git branch -d `branch_search $@`
 }
 
 function brdd {
+  ch master
   git branch -D $@
 }
 
@@ -69,7 +71,7 @@ function branch_search {
     for var in "$@"
     do
         # TODO(pratik): extract into a separate function.
-        shopt -s nocasematch
+        setopt -s nocasematch
         if [[ $branch =~ $var ]]; then
           match=$(echo $branch | tr "/" "\n" | tail -n 1)
         fi
@@ -81,11 +83,6 @@ function bs { branch_search $@; } # shortened alias: bs
 function cj { ch `bs $@`; } # fuzzy search to switch git branches
 function rb { git rebase `bs $@`; }
 
-function gp {
-  ch master
-  git pull
-}
-
 function dt {
   git difftool $@
 }
@@ -94,10 +91,17 @@ function dt {
 function rbm {
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
   echo 'Rebasing' $CUR_BRANCH 'against new master'
-  gp
+  cj master 
+  git pull
   ch -
   git rebase master
   br
+}
+
+function dbb {
+  CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
+  rbm
+  brd $CUR_BRANCH
 }
 
 function db {
@@ -109,6 +113,8 @@ function db {
     ch master
     echo 'Deleting' $CUR_BRANCH "after a soft rebase"
     brdd $CUR_BRANCH
+    git merge
+    sb
   else 
     echo "The branch $CUR_BRANCH is not yet merged"
   fi
@@ -122,7 +128,8 @@ function chb {
 }
 
 function chn {
-  gp
+  cj master
+  git pull
   chb $@
 }
 
