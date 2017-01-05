@@ -130,6 +130,15 @@ function chn {
   chb $@
 }
 
+function chna {
+  chn $@
+  git commit --amend --no-edit -a
+}
+
+function rr {
+  hub pull-request
+}
+
 function ad {
   git add $@
 }
