@@ -59,9 +59,6 @@ function ch {
   git checkout $@
 }
 
-
-
-
 # A simplified fuzzy search - case insensitive search of all the git branches.
 function branch_search {
   match="master"
@@ -165,5 +162,5 @@ function sq {
 }
 
 function remove_orig {
-  rm `find -f  ./* | grep .*.orig`
+  rm `f .orig | grep -v gitignore | grep -v node_modules`
 }
