@@ -137,7 +137,7 @@ function chna {
 
 function rr {
   gp -u
-  hub pull-request
+  hub pull-request -F /dev/null
 }
 
 function ad {
