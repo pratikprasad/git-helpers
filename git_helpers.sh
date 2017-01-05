@@ -135,9 +135,9 @@ function chna {
   git commit --amend --no-edit -a
 }
 
-function {
+function rr {
   gp -u
-  hub pull-request -m \w
+  hub pull-request
 }
 
 function ad {
