@@ -137,7 +137,7 @@ function chna {
 
 function rr {
   gp -u
-  hub pull-request
+  hh pull-request
 }
 
 function ad {
@@ -152,10 +152,6 @@ function ac {
 function acm {
   ad $@
   git commit --amend -v
-}
-
-function aca {
-  git commit --amend -av
 }
 
 # Add a new workflow for partial commits and squashing
