@@ -154,10 +154,6 @@ function acm {
   git commit --amend -v
 }
 
-function aca {
-  git commit --amend -av
-}
-
 # Add a new workflow for partial commits and squashing
 function ca {
   git commit -am "$*"
