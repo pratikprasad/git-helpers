@@ -135,6 +135,10 @@ function chna {
   git commit --amend --no-edit -a
 }
 
+function rr {
+  gp -u
+}
+
 function pr {
   gp -u
   hh pull-request 
