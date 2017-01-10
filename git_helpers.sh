@@ -137,7 +137,7 @@ function chna {
 
 function pr {
   gp -u
-  hh pull-request -o
+  hh pull-request 
 }
 
 function ad {
