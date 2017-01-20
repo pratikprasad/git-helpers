@@ -141,7 +141,7 @@ function rr {
 
 function pr {
   gp -u
-  hh pull-request -m $(current_branch | tr - " "`)
+  hh pull-request -m "$(current_branch | tr - " ")" 
 }
 
 function ad {
