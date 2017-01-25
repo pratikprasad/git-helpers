@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Import these in .bash_profile to start using immediately.
 
 function st {
@@ -141,7 +142,7 @@ function rr {
 
 function pr {
   gp -u
-  hh pull-request -m "$(current_branch | tr - " ")" 
+  hh pull-request -o -m "$(current_branch | tr - " ")"
 }
 
 function ad {
