@@ -142,9 +142,7 @@ function rr {
 
 function pr {
   gp -u
-  out=$(hh pull-request -m "$(current_branch | tr - " ")")
-  echo $out
-  echo "$out" | tail -n 1 | pbcopy
+  hh pull-request -o -m "$(current_branch | tr - " ")"
 }
 
 function ad {
