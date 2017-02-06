@@ -24,12 +24,16 @@ function br {
     # hacky way to get rid of programattic git branch formatting:
     # replace file separator '/' with new lines and pick the last token
     branchName=$(echo $branch | tr "/" "\n" | tail -n 1)
-    if [[ $branchName =~ $currentBranch ]]; then
-      echo "${purple}(${branchName: -3}) ${green}$branchName ${reset}" | tr "-" " "
+    if [[ $branchName == $currentBranch ]]; then
+      echo "${purple}(${branchName: -3}) ${green}$branchName${reset}" | tr "-" " " | tr "_" " "
     else
-      echo "${purple}(${branchName: -3}) ${reset}$branchName" | tr "-" " "
+      echo "${purple}(${branchName: -3}) ${reset}$branchName" | tr "-" " " | tr "_" " "
     fi
   done
+}
+
+function brm {
+  git branch -m `join $@`
 }
 
 function brd {
