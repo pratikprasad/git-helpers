@@ -162,7 +162,11 @@ function acm {
   git commit --amend -v
 }
 
-# Add a new workflow for partial commits and squashing
+function c {
+  git commit -m "$*"
+}
+
+# Quickly add and commit everything with the given string as acommit message
 function ca {
   git commit -am "$*"
 }
