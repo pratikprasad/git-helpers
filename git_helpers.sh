@@ -148,6 +148,10 @@ function pr {
   hh pull-request -m "$(current_branch | tr - " ")" 
 }
 
+function ap {
+  git add -p
+}
+
 function ad {
   git add $@
 }
