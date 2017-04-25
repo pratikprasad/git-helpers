@@ -183,6 +183,10 @@ function sq {
   git rebase -i HEAD~`num_commits`
 }
 
+function td {
+  git log -p -`num_commits` | grep -i todo
+}
+
 function remove_orig {
   rm `f .orig | grep -v gitignore | grep -v node_modules`
 }
