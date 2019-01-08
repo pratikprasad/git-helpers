@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Import these in .bash_profile to start using immediately.
 
 function st {
@@ -92,7 +93,7 @@ function dt {
 function rbm {
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
   echo 'Rebasing' $CUR_BRANCH 'against new master'
-  cj master 
+  cj master
   git pull
   ch -
   git rebase master
@@ -109,14 +110,14 @@ function db {
   git pull --prune
   CUR_BRANCH=`git rev-parse --abbrev-ref HEAD`
   STATUS=`git status`
-  EXPECTED="the upstream is gone" # HACK 
+  EXPECTED="the upstream is gone" # HACK
   if [[ $STATUS == *"$EXPECTED"* ]]; then
     ch master
     echo 'Deleting' $CUR_BRANCH "after a soft rebase"
     brdd $CUR_BRANCH
     git merge
     sb
-  else 
+  else
     echo "The branch $CUR_BRANCH is not yet merged"
   fi
 }
@@ -145,7 +146,7 @@ function rr {
 
 function pr {
   gp -u
-  hh pull-request -m "$(current_branch | tr - " ")" 
+  hh pull-request -m "$(current_branch | tr - " ")"
 }
 
 function ap {
@@ -189,4 +190,9 @@ function td {
 
 function remove_orig {
   rm `f .orig | grep -v gitignore | grep -v node_modules`
+}
+
+
+function changed_files {
+    git diff --name-only
 }
