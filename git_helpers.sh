@@ -9,6 +9,14 @@ function lg {
   git log
 }
 
+function suggestion {
+  # Try to give a helpful hint
+  #   Take out meaningless words
+  #   Take the first 3 letters of the first word
+  hint=$(echo $1 | tr "-" "\n" | grep -wiv "use\|a\|add\|for\|in\|remove\|the\|to" | head -n 1)
+  trimmed=$(echo "${hint:0:3}")
+  echo $trimmed
+}
 
 #COLORS!
 red=`tput setaf 1`
@@ -22,13 +30,12 @@ function br {
   branches=()
   eval "$(git for-each-ref --shell --format='branches+=(%(refname))' refs/heads/)"
   for branch in "${branches[@]}"; do
-    # hacky way to get rid of programattic git branch formatting:
-    # replace file separator '/' with new lines and pick the last token
     branchName=$(echo $branch | tr "/" "\n" | tail -n 1)
+    suggestion=$(suggestion $branchName)
     if [[ $branchName == $currentBranch ]]; then
-      echo "${purple}(${branchName: -3}) ${green}$branchName${reset}" | tr "-" " " | tr "_" " "
+      echo "${purple}(${suggestion}) ${green}$branchName${reset}" | tr "-" " " | tr "_" " "
     else
-      echo "${purple}(${branchName: -3}) ${reset}$branchName" | tr "-" " " | tr "_" " "
+      echo "${purple}(${suggestion}) ${reset}$branchName" | tr "-" " " | tr "_" " "
     fi
   done
 }
