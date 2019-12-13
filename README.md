@@ -5,7 +5,7 @@ Import the file git_helpers.sh into your bash profile to start using immediately
 
 The functions will only work in git diretories. For example, run "st" for "git status"
 
-###The Basic Workflow:
+### The Basic Workflow:
 1. Create a new branch for your task. 
 ```chn Name of a new branch```
   This creates a new branch with the name "Name-of-a-new-branch".
